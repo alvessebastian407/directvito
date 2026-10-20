@@ -1,23 +1,24 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#071c83">
-  <meta name="description" content="Directvito: información, atención y contacto.">
-  <title>Directvito | Tu entretenimiento</title>
+  <title>Directvito</title>
 
   <style>
+    :root {
+      --texto: #ffffff;
+      --azul: #72c8ff;
+      --fondo: #06145e;
+    }
+
     * {
       box-sizing: border-box;
     }
 
-    :root {
-      --azul: #071c83;
-      --azul-claro: #087cf0;
-      --fondo: #f3f6ff;
-      --texto: #17234b;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -38,310 +39,281 @@
       justify-content: space-between;
       align-items: center;
       color: white;
+      gap: 16px;
     }
 
+    /* LOGO PNG */
     .logo {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      flex-shrink: 1;
+      min-width: 0;
+    }
 
-.logo img {
-  display: block;
-  width: 160px;
-  max-width: 55vw;
-  height: auto;
-  object-fit: contain;
-}
-
-    .logo span {
-      color: #72c8ff;
+    .logo img {
+      display: block;
+      width: 160px;
+      max-width: 55vw;
+      height: auto;
+      object-fit: contain;
     }
 
     .menu {
       color: white;
       text-decoration: none;
-      font-size: 14px;
-      font-weight: bold;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      white-space: nowrap;
     }
 
     main {
-      width: min(100% - 28px, 540px);
-      margin: 12px auto 38px;
+      max-width: 760px;
+      margin: auto;
+      padding: 30px 20px 60px;
     }
 
-    .intro {
-      text-align: center;
-      color: white;
-      padding: 12px 8px 24px;
+    .presentacion {
+      margin-bottom: 35px;
     }
 
-    .intro h1 {
-      font-size: clamp(30px, 7vw, 42px);
-      margin: 0 0 10px;
-      letter-spacing: -1.3px;
+    .presentacion h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 7vw, 46px);
+      line-height: 1.08;
+      font-weight: 900;
+      letter-spacing: -1.5px;
     }
 
-    .intro p {
+    .presentacion h1 span {
+      color: var(--azul);
+    }
+
+    .presentacion p {
       margin: 0;
+      max-width: 480px;
+      color: #e0ebff;
+      font-size: 15px;
       line-height: 1.6;
-      color: #e2eaff;
     }
 
-    .card {
-      background: white;
-      padding: 24px;
-      margin-bottom: 16px;
-      border-radius: 20px;
-      box-shadow: 0 12px 35px #00104b24;
+    .seccion-titulo {
+      margin: 0 0 18px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-weight: 800;
+      color: #c6e5ff;
     }
 
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 19px;
+    .vendedores {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
-    .card p {
-      color: #68728b;
-      line-height: 1.6;
-      font-size: 14px;
-      margin: 8px 0 16px;
-    }
-
-    .stars {
-      color: #ffb900;
-      font-size: 25px;
-      letter-spacing: 3px;
-    }
-
-    .button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-decoration: none;
-      background: var(--azul-claro);
-      color: white;
-      font-size: 14px;
-      font-weight: bold;
-      padding: 14px 18px;
-      border-radius: 12px;
-      transition: transform .2s, background .2s;
-    }
-
-    .button:hover {
-      background: var(--azul);
-      transform: translateY(-2px);
-    }
-
-    .hours {
-      display: flex;
-      justify-content: space-between;
-      padding: 11px 0;
-      border-bottom: 1px solid #edf0f7;
-      font-size: 14px;
-      gap: 12px;
-    }
-
-    .hours:last-child {
-      border-bottom: 0;
-    }
-
-    .closed {
-      color: #d34b4b;
-      font-weight: bold;
-    }
-
-    .open {
-      color: #188650;
-      font-weight: bold;
-    }
-
-    .seller {
+    .vendedor {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin: 16px 0;
+      gap: 15px;
+      padding: 17px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.09);
+      backdrop-filter: blur(8px);
     }
 
     .avatar {
       width: 52px;
       height: 52px;
-      flex: 0 0 52px;
-      border-radius: 50%;
+      flex-shrink: 0;
       overflow: hidden;
-      background: #e8edff;
-      color: #1742b8;
-      display: grid;
-      place-items: center;
-      font-size: 22px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
     }
 
     .avatar img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      border-radius: 50%;
     }
 
-    .seller-info {
+    .datos {
       flex: 1;
       min-width: 0;
     }
 
-    .seller-info strong {
-      display: block;
-      font-size: 15px;
+    .datos h3 {
+      margin: 0 0 5px;
+      font-size: 16px;
     }
 
-    .seller-info small {
-      display: block;
-      color: #788198;
-      margin-top: 5px;
-    }
-
-    .seller .button {
-      padding: 11px 13px;
+    .datos p {
+      margin: 0;
       font-size: 12px;
-      flex-shrink: 0;
+      color: #d7e6ff;
+    }
+
+    .contactar {
+      display: inline-block;
+      padding: 10px 13px;
+      border-radius: 10px;
+      background: white;
+      color: #10318e;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .contactar:hover {
+      background: var(--azul);
+    }
+
+    .contacto-final {
+      margin-top: 35px;
+      padding: 22px;
+      text-align: center;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.14);
+    }
+
+    .contacto-final h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .contacto-final p {
+      margin: 0 0 18px;
+      color: #e0ebff;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     footer {
+      max-width: 760px;
+      margin: auto;
+      padding: 0 20px 25px;
+      color: #d7e6ff;
       text-align: center;
-      color: #e0e8ff;
-      font-size: 12px;
-      padding: 10px 20px 30px;
-      line-height: 1.8;
+      font-size: 11px;
     }
 
     @media (max-width: 420px) {
-      .card {
-        padding: 19px;
+      header {
+        padding: 20px 16px;
       }
 
-      .seller {
-        gap: 9px;
+      main {
+        padding: 25px 16px 45px;
+      }
+
+      .logo img {
+        width: 135px;
+      }
+
+      .vendedor {
+        gap: 10px;
+        padding: 13px;
       }
 
       .avatar {
-        width: 44px;
-        height: 44px;
-        flex-basis: 44px;
+        width: 46px;
+        height: 46px;
       }
 
-      .seller .button {
-        padding: 10px;
+      .contactar {
+        padding: 9px 10px;
+        font-size: 11px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <header>
     <a class="logo" href="#" aria-label="Inicio">
-      <img src="logo.png" alt="Logo de Directvito">
+      <img src="Logo.png" alt="Logo de Directvito">
     </a>
 
     <a class="menu" href="#contacto">CONTACTO ↗</a>
   </header>
 
   <main>
-    <section class="intro">
-      <h1>¡Estamos para ayudarte!</h1>
-      <p>Encontrá información y contactate con nuestro equipo de atención.</p>
+    <section class="presentacion">
+      <h1>Estamos para <span>ayudarte.</span></h1>
+      <p>
+        Contactá directamente con nuestro equipo para recibir atención
+        personalizada.
+      </p>
     </section>
 
-    <section class="card">
-      <div class="stars" aria-label="Cinco estrellas">★★★★★</div>
-      <h2>Tu opinión nos importa</h2>
-      <p>¿Cómo fue tu experiencia con nosotros? Nos encantaría conocer tu opinión.</p>
-      <a class="button" href="#"
-         onclick="alert('Acá agregaremos el enlace para dejar tu reseña.'); return false;">
-        Dejar una opinión
+    <section id="contacto">
+      <h2 class="seccion-titulo">NUESTRO EQUIPO</h2>
+
+      <div class="vendedores">
+
+        <article class="vendedor">
+          <div class="avatar">
+            <img src="Natalia.jpeg" alt="Natalia">
+          </div>
+
+          <div class="datos">
+            <h3>Natalia</h3>
+            <p>Atención personalizada</p>
+          </div>
+
+          <a
+            class="contactar"
+            href="https://wa.me/59897404207"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp ↗
+          </a>
+        </article>
+
+        <article class="vendedor">
+          <div class="avatar">
+            <img src="Belen.png" alt="Belén">
+          </div>
+
+          <div class="datos">
+            <h3>Belén</h3>
+            <p>Atención personalizada</p>
+          </div>
+
+          <a
+            class="contactar"
+            href="https://wa.me/59897563391"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp ↗
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="contacto-final">
+      <h2>¿Necesitás ayuda?</h2>
+      <p>Escribinos por WhatsApp y te ayudamos.</p>
+      <a
+        class="contactar"
+        href="#contacto"
+      >
+        Contactar al equipo ↗
       </a>
-    </section>
-
-    <section class="card">
-      <h2>📺 Grilla de canales</h2>
-      <p>Consultá la programación y encontrá tus canales favoritos.</p>
-      <a class="button" href="#"
-         onclick="alert('Acá pondremos el enlace de la grilla de canales.'); return false;">
-        Consultar grilla →
-      </a>
-    </section>
-
-    <section class="card">
-      <h2>🕒 Horarios de atención</h2>
-      <div class="hours">
-        <span>Lunes a viernes</span>
-        <strong>8:00 – 20:00</strong>
-      </div>
-      <div class="hours">
-        <span>Sábado</span>
-        <strong>8:00 – 20:00</strong>
-      </div>
-      <div class="hours">
-        <span>Domingo</span>
-        <strong class="closed">Cerrado</strong>
-      </div>
-    </section>
-
-    <section class="card" id="contacto">
-      <h2>👋 Contactá a nuestros vendedores</h2>
-      <p>Elegí con quién querés comunicarte.</p>
-
-      <div class="seller">
-        <div class="avatar">
-          <img src="Natalia.jpeg" alt="Natalia">
-        </div>
-        <div class="seller-info">
-          <strong>Natalia</strong>
-          <small>Atención personalizada</small>
-        </div>
-        <a class="button"
-           href="https://wa.me/097404207"
-           target="_blank"
-           rel="noopener noreferrer">
-          WhatsApp
-        </a>
-      </div>
-
-      <div class="seller">
-        <div class="avatar">
-          <img src="Belen.png" alt="Belén">
-        </div>
-        <div class="seller-info">
-          <strong>Belén</strong>
-          <small>Atención personalizada</small>
-        </div>
-        <a class="button"
-           href="https://wa.me/097563391"
-           target="_blank"
-           rel="noopener noreferrer">
-          WhatsApp
-        </a>
-      </div>
-
-      <div class="seller">
-        <div class="avatar">👤</div>
-        <div class="seller-info">
-          <strong>Vendedor 3</strong>
-          <small>Atención personalizada</small>
-        </div>
-        <a class="button"
-           href="https://wa.me/59800000000"
-           target="_blank"
-           rel="noopener noreferrer">
-          WhatsApp
-        </a>
-      </div>
     </section>
   </main>
 
   <footer>
-    <strong>DIRECTVito</strong><br>
-    Información y atención al cliente<br>
-    © 2026 · Todos los derechos reservados
+    © Directvito · Todos los derechos reservados
   </footer>
+
 </body>
 </html>
+```
